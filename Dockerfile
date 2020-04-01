@@ -1,10 +1,11 @@
 FROM debian:buster-slim
-MAINTAINER Mattias Wadman mattias.wadman@gmail.com
+MAINTAINER Degra degra@protonmail.com
 RUN \
   apt-get update && \
   apt-get -y --no-install-recommends install \
     procps \
     postfix \
+    dovecot-core \
     libsasl2-modules \
     opendkim \
     opendkim-tools \
@@ -27,5 +28,4 @@ COPY opendkim.conf /etc/opendkim.conf
 RUN mkdir -p /etc/opendkim/keys
 COPY run /root/
 VOLUME ["/var/lib/postfix", "/var/mail", "/var/spool/postfix", "/etc/opendkim/keys"]
-EXPOSE 25
 CMD ["/root/run"]
