@@ -55,6 +55,7 @@ if [ ! -z "$OPENDKIM_DOMAINS" ] ; then
   dkimConfig
   service opendkim start
 fi
+service dovecot start
 service postfix start
 rsyslogd -n &
 wait
